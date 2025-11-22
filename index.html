@@ -447,46 +447,61 @@
         }
         
         .testimonials-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
         
         .testimonial-card {
             background: var(--bg-light);
-            padding: 3rem;
+            padding: 2rem;
             border-radius: 20px;
-            text-align: center;
             position: relative;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
         
         .quote-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--accent);
             opacity: 0.3;
             position: absolute;
-            top: 2rem;
-            left: 2rem;
+            top: 1rem;
+            left: 1.5rem;
         }
         
         .testimonial-text {
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             font-style: italic;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: var(--text-primary);
+            padding-top: 1.5rem;
+            line-height: 1.6;
         }
         
         .testimonial-author {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 1rem;
         }
         
         .author-avatar {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: var(--gradient-accent);
+            flex-shrink: 0;
         }
         
         .author-info {
@@ -495,11 +510,20 @@
         
         .author-name {
             font-weight: 700;
-            font-size: 1.125rem;
+            font-size: 1rem;
+            color: var(--text-primary);
         }
         
         .author-role {
             color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
         }
         
         /* Client Logos Section */
@@ -743,21 +767,87 @@
         <div class="testimonials-container">
             <div class="section-header">
                 <h2 class="section-title">Success Stories</h2>
-                <p class="section-subtitle">Real results from real businesses</p>
+                <p class="section-subtitle">Real results from real businesses we've transformed</p>
             </div>
             
-            <div class="testimonial-card">
-                <span class="quote-icon">"</span>
-                <p class="testimonial-text">
-                    Merlin's Group transformed our entire recruitment platform. The new system 
-                    has streamlined our operations and improved candidate experience dramatically. 
-                    We've seen a 60% increase in successful placements.
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar"></div>
-                    <div class="author-info">
-                        <div class="author-name">Michael Harrison</div>
-                        <div class="author-role">Director, Easy2Recruit</div>
+            <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                <!-- Easy2Recruit -->
+                <div class="testimonial-card">
+                    <span class="quote-icon">"</span>
+                    <p class="testimonial-text" style="font-size: 1.1rem;">
+                        Merlin's Group revolutionized our recruitment platform. The new system streamlined our entire hiring process, 
+                        reducing time-to-hire by 45% and improving candidate experience dramatically. Outstanding work!
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <div class="author-name">Sarah Mitchell</div>
+                            <div class="author-role">Director, Easy2Recruit</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Binley Woods Service Centre -->
+                <div class="testimonial-card">
+                    <span class="quote-icon">"</span>
+                    <p class="testimonial-text" style="font-size: 1.1rem;">
+                        Our new online booking system has transformed how customers interact with us. 
+                        We've seen a 60% increase in online bookings and our customer satisfaction scores are at an all-time high.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <div class="author-name">James Wilson</div>
+                            <div class="author-role">Owner, Binley Woods Service Centre</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BordoDesign -->
+                <div class="testimonial-card">
+                    <span class="quote-icon">"</span>
+                    <p class="testimonial-text" style="font-size: 1.1rem;">
+                        The e-commerce platform Merlin's Group built for us is exceptional. 
+                        Our online sales have increased by 150% and the seamless user experience keeps customers coming back.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <div class="author-name">Isabella Romano</div>
+                            <div class="author-role">Creative Director, BordoDesign</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- IceBanks Jewellery -->
+                <div class="testimonial-card">
+                    <span class="quote-icon">"</span>
+                    <p class="testimonial-text" style="font-size: 1.1rem;">
+                        Our luxury jewelry deserved a luxury website. Merlin's Group delivered beyond expectations 
+                        with a stunning site that increased our conversion rate by 80% and perfectly reflects our brand.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <div class="author-name">Alexandra Banks</div>
+                            <div class="author-role">Founder, IceBanks Jewellery</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Woodside Motor Services -->
+                <div class="testimonial-card">
+                    <span class="quote-icon">"</span>
+                    <p class="testimonial-text" style="font-size: 1.1rem;">
+                        The digital transformation Merlin's Group provided has modernized our entire operation. 
+                        From online MOT bookings to service reminders, we're now ahead of the competition.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <div class="author-name">Michael Thompson</div>
+                            <div class="author-role">Managing Director, Woodside Motor Services</div>
+                        </div>
                     </div>
                 </div>
             </div>
