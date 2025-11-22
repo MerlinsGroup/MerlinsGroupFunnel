@@ -1985,6 +1985,214 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 5rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .pricing-card.featured {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .pricing-ribbon {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-fire);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-name {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .pricing-card.featured .pricing-desc {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .pricing-price {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--bg-light);
+            border-bottom: 1px solid var(--bg-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card.featured .pricing-price {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .price-amount {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            display: block;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pricing-card.featured .price-amount {
+            background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price-period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .pricing-card.featured .price-period {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .pricing-card.featured .pricing-features li {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features .check {
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .pricing-btn {
+            display: block;
+            text-align: center;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+            color: var(--text-primary);
+        }
+
+        .pricing-btn:hover {
+            background: var(--gradient-accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .pricing-btn-primary {
+            background: var(--gradient-accent);
+            color: white;
+        }
+
+        .pricing-btn-primary:hover {
+            box-shadow: var(--glow-blue);
+        }
+
+        @media (max-width: 992px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pricing-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .pricing-card {
+                padding: 2rem;
+            }
+
+            .price-amount {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2450,6 +2658,87 @@
         </div>
     </section>
     
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="pricing-container">
+            <div class="section-header">
+                <span class="section-badge">Pricing</span>
+                <h2 class="section-title">Choose Your Growth Package</h2>
+                <p class="section-subtitle">Transparent pricing. No hidden fees. Cancel anytime.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Starter Package -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Starter</h3>
+                        <p class="pricing-desc">Perfect for new agencies getting started</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="price-amount">£1,500</span>
+                        <span class="price-period">one-time setup</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Lead generation system setup</li>
+                        <li><span class="check">✓</span> Basic CRM setup & integration</li>
+                        <li><span class="check">✓</span> Email automation sequences</li>
+                        <li><span class="check">✓</span> Candidate sourcing templates</li>
+                        <li><span class="check">✓</span> 1 recruitment sector focus</li>
+                        <li><span class="check">✓</span> Email support</li>
+                    </ul>
+                    <a href="#form" class="pricing-btn">Get Started</a>
+                </div>
+
+                <!-- Growth Package -->
+                <div class="pricing-card featured">
+                    <div class="pricing-ribbon">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Growth</h3>
+                        <p class="pricing-desc">For agencies ready to scale fast</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="price-amount">£3,000</span>
+                        <span class="price-period">one-time setup</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Full lead generation system</li>
+                        <li><span class="check">✓</span> Candidate training program access</li>
+                        <li><span class="check">✓</span> Custom CRM built for you</li>
+                        <li><span class="check">✓</span> Full communication automation</li>
+                        <li><span class="check">✓</span> Healthcare & AI sector focus</li>
+                        <li><span class="check">✓</span> SMS + Email sequences</li>
+                        <li><span class="check">✓</span> Priority support</li>
+                        <li><span class="check">✓</span> Monthly strategy call</li>
+                    </ul>
+                    <a href="#form" class="pricing-btn pricing-btn-primary">Get Started</a>
+                </div>
+
+                <!-- Enterprise Package -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Enterprise</h3>
+                        <p class="pricing-desc">For larger agencies & custom needs</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="price-amount">Custom</span>
+                        <span class="price-period">let's talk</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Everything in Growth</li>
+                        <li><span class="check">✓</span> White-label training program</li>
+                        <li><span class="check">✓</span> Fully custom CRM solution</li>
+                        <li><span class="check">✓</span> Multi-channel automation</li>
+                        <li><span class="check">✓</span> Multiple sector access</li>
+                        <li><span class="check">✓</span> Dedicated account manager</li>
+                        <li><span class="check">✓</span> Weekly strategy calls</li>
+                        <li><span class="check">✓</span> Custom API integrations</li>
+                    </ul>
+                    <a href="#form" class="pricing-btn">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Final CTA Section -->
     <section class="final-cta">
         <h2>Ready to 10x Your Placements?</h2>
