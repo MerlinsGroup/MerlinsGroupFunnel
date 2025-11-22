@@ -1624,15 +1624,71 @@
             align-items: center;
         }
 
-        .interview-video-wrapper {
+        .interview-image-wrapper {
             border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--shadow-xl);
         }
 
-        .interview-video {
+        .linkedin-image-link {
+            display: block;
+            position: relative;
+        }
+
+        .interview-image {
             width: 100%;
             display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .linkedin-image-link:hover .interview-image {
+            transform: scale(1.05);
+        }
+
+        .linkedin-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 119, 181, 0.85);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .linkedin-image-link:hover .linkedin-overlay {
+            opacity: 1;
+        }
+
+        .linkedin-overlay span {
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 1.5rem;
+            background: #0077B5;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .linkedin-btn:hover {
+            background: #005885;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 119, 181, 0.4);
         }
 
         .interview-stats {
@@ -1732,12 +1788,17 @@
                 gap: 2rem;
             }
 
-            .interview-video-wrapper {
+            .interview-image-wrapper {
                 order: 1;
             }
 
             .interview-text {
                 order: 2;
+            }
+
+            .linkedin-btn {
+                width: 100%;
+                justify-content: center;
             }
 
             .interview-stats {
@@ -1975,15 +2036,20 @@
     <!-- Client Interview Section -->
     <section class="client-interview-section">
         <div class="interview-container">
-            <div class="interview-video-wrapper">
-                <video controls class="interview-video">
-                    <source src="ambisingh.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <div class="interview-image-wrapper">
+                <a href="https://linkedin.com/in/ambisingh" target="_blank" class="linkedin-image-link">
+                    <img src="ambisingh.jpg" alt="Ambi Singh at Event" class="interview-image">
+                    <div class="linkedin-overlay">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                        <span>View LinkedIn Profile</span>
+                    </div>
+                </a>
             </div>
             <div class="interview-text">
                 <span class="intro-badge" style="background: var(--gradient-fire);">Client Success Story</span>
-                <h2 class="interview-title">Hear From Ambi Singh - One of Our Successful Partners</h2>
+                <h2 class="interview-title">Meet Ambi Singh - One of Our Successful Partners</h2>
                 <p class="interview-description">
                     Ambi Singh shares his experience working with Merlin's Group and how our automated
                     recruitment system transformed his agency's operations and profitability.
@@ -1998,6 +2064,12 @@
                         <span class="stat-desc">More Placements</span>
                     </div>
                 </div>
+                <a href="https://linkedin.com/in/ambisingh" target="_blank" class="linkedin-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    Connect with Ambi on LinkedIn
+                </a>
             </div>
         </div>
     </section>
