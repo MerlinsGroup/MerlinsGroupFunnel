@@ -261,6 +261,29 @@
             color: var(--text-secondary);
         }
         
+        /* Calendly Widget Styling */
+        .calendly-inline-widget {
+            border: 2px solid var(--bg-light);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin: 1rem 0;
+        }
+        
+        .calendly-inline-widget iframe {
+            border-radius: 10px;
+        }
+        
+        /* Mobile adjustments for Calendly */
+        @media (max-width: 768px) {
+            .calendly-inline-widget {
+                margin: 0 -1rem;
+            }
+            
+            .form-card {
+                padding: 1.5rem;
+            }
+        }
+        
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -630,89 +653,19 @@
             
             <div class="form-card" id="form">
                 <div class="form-header">
-                    <h2 class="form-title">Get Your Free Consultation</h2>
-                    <p class="form-subtitle">Limited spots available this month</p>
+                    <h2 class="form-title">Schedule Your Free Consultation</h2>
+                    <p class="form-subtitle">Pick a time that works best for you</p>
                 </div>
                 
-                <form id="bookingForm" action="#" method="POST">
-                    <div class="form-group">
-                        <label for="fullName">Full Name *</label>
-                        <input type="text" id="fullName" name="fullName" required placeholder="John Smith">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Business Email *</label>
-                        <input type="email" id="email" name="email" required placeholder="john@company.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="07123456789">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="postcode">Postcode *</label>
-                        <input type="text" id="postcode" name="postcode" required placeholder="SW1A 1AA">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">Service Required *</label>
-                        <select id="service" name="service" required>
-                            <option value="">Select a service</option>
-                            <option value="Web Development">Web Development</option>
-                            <option value="Digital Marketing">Digital Marketing</option>
-                            <option value="SEO Optimization">SEO Optimization</option>
-                            <option value="E-commerce Setup">E-commerce Setup</option>
-                            <option value="Mobile App Development">Mobile App Development</option>
-                            <option value="Cloud Migration">Cloud Migration</option>
-                            <option value="Consultation">Free Consultation</option>
-                            <option value="Custom Solution">Custom Solution</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="appointmentDate">Preferred Date *</label>
-                        <input type="date" id="appointmentDate" name="appointmentDate" required min="">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="appointmentTime">Preferred Time *</label>
-                        <select id="appointmentTime" name="appointmentTime" required>
-                            <option value="">Select a time</option>
-                            <option value="09:00">9:00 AM</option>
-                            <option value="09:30">9:30 AM</option>
-                            <option value="10:00">10:00 AM</option>
-                            <option value="10:30">10:30 AM</option>
-                            <option value="11:00">11:00 AM</option>
-                            <option value="11:30">11:30 AM</option>
-                            <option value="12:00">12:00 PM</option>
-                            <option value="14:00">2:00 PM</option>
-                            <option value="14:30">2:30 PM</option>
-                            <option value="15:00">3:00 PM</option>
-                            <option value="15:30">3:30 PM</option>
-                            <option value="16:00">4:00 PM</option>
-                            <option value="16:30">4:30 PM</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="websiteUrl">Current Website (optional)</label>
-                        <input type="url" id="websiteUrl" name="websiteUrl" placeholder="https://www.example.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="discountCode">Discount Code (optional)</label>
-                        <input type="text" id="discountCode" name="discountCode" placeholder="Enter code if you have one">
-                    </div>
-                    
-                    <input type="hidden" id="source" name="source" value="Website">
-                    
-                    <button type="submit" class="form-submit shimmer">
-                        Book My Consultation →
-                    </button>
-                </form>
+                <!-- Calendly inline widget begin -->
+                <div class="calendly-inline-widget" 
+                     data-url="https://calendly.com/merlinsgroup-meeting/30min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=667eea" 
+                     style="min-width:320px;height:650px;border-radius:10px;overflow:hidden;">
+                </div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                <!-- Calendly inline widget end -->
                 
-                <div class="form-footer">
+                <div class="form-footer" style="margin-top: 1.5rem;">
                     🔒 Your information is 100% secure and will never be shared
                 </div>
             </div>
@@ -843,12 +796,6 @@
     </section>
     
     <script>
-        // Google Sheets Web App URL - REPLACE WITH YOUR DEPLOYED WEB APP URL
-        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE';
-        
-        // Set minimum date to today
-        document.getElementById('appointmentDate').min = new Date().toISOString().split('T')[0];
-        
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -861,77 +808,6 @@
                     });
                 }
             });
-        });
-        
-        // Form submission handler
-        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                fullName: document.getElementById('fullName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                postcode: document.getElementById('postcode').value,
-                service: document.getElementById('service').value,
-                appointmentDate: document.getElementById('appointmentDate').value,
-                appointmentTime: document.getElementById('appointmentTime').value,
-                source: document.getElementById('source').value,
-                discountCode: document.getElementById('discountCode').value || '',
-                websiteUrl: document.getElementById('websiteUrl').value || ''
-            };
-            
-            // Animate button
-            const btn = this.querySelector('.form-submit');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = 'Processing...';
-            btn.style.opacity = '0.7';
-            btn.disabled = true;
-            
-            try {
-                // If Google Script URL is configured, send to Google Sheets
-                if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE') {
-                    const response = await fetch(GOOGLE_SCRIPT_URL, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(formData)
-                    });
-                    
-                    // Since no-cors mode, we can't read response, assume success
-                    btn.innerHTML = '✓ Success! We\'ll contact you within 24 hours';
-                    btn.style.background = 'linear-gradient(135deg, #10B981 0%, #059669 100%)';
-                    
-                    // Reset form
-                    setTimeout(() => {
-                        this.reset();
-                        btn.innerHTML = originalText;
-                        btn.style.background = '';
-                        btn.style.opacity = '1';
-                        btn.disabled = false;
-                    }, 3000);
-                } else {
-                    // Fallback - just show success (for demo)
-                    console.log('Form Data:', formData);
-                    alert('Please configure the Google Script URL to enable form submission.\n\nForm data logged to console.');
-                    btn.innerHTML = originalText;
-                    btn.style.opacity = '1';
-                    btn.disabled = false;
-                }
-            } catch (error) {
-                console.error('Submission error:', error);
-                btn.innerHTML = 'Error - Please try again';
-                btn.style.background = 'linear-gradient(135deg, #EF4444 0%, #DC2626 100%)';
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = '';
-                    btn.style.opacity = '1';
-                    btn.disabled = false;
-                }, 3000);
-            }
         });
         
         // Intersection Observer for animations
@@ -963,6 +839,21 @@
             logo.style.transform = 'scale(0.8)';
             logo.style.transition = `all 0.5s ease ${index * 0.1}s`;
             observer.observe(logo);
+        });
+        
+        // Optional: Listen for Calendly events
+        window.addEventListener('message', function(e) {
+            if (e.data.event && e.data.event.indexOf('calendly') === 0) {
+                console.log('Calendly Event:', e.data.event);
+                
+                // Track successful bookings
+                if (e.data.event === 'calendly.event_scheduled') {
+                    console.log('Meeting scheduled successfully!');
+                    
+                    // You can add tracking or analytics here
+                    // Example: gtag('event', 'meeting_scheduled', {...});
+                }
+            }
         });
     </script>
 </body>
