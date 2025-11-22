@@ -911,13 +911,30 @@
         @media (max-width: 768px) {
             /* Video Hero Mobile */
             .video-hero {
-                min-height: 100vh;
+                min-height: auto;
                 height: auto;
+                padding: 3rem 0;
+            }
+
+            .video-container {
+                position: relative;
+                height: auto;
+            }
+
+            .hero-video {
+                display: none;
+            }
+
+            .video-overlay {
+                position: absolute;
+                height: 100%;
             }
 
             .video-content {
                 padding: 1.5rem;
                 justify-content: center;
+                position: relative;
+                height: auto;
             }
 
             .pulse-badge {
@@ -1472,12 +1489,17 @@
         }
 
         /* Social Header */
-        .social-header {
+        .social-header-wrapper {
             background: var(--primary);
+        }
+
+        .social-header {
             padding: 0.75rem 2rem;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .instagram-link {
@@ -1502,6 +1524,23 @@
 
         .instagram-link:hover svg {
             fill: #E1306C;
+        }
+
+        .header-cta {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg), var(--glow-blue);
         }
 
         /* Intro Video Section */
@@ -1762,24 +1801,37 @@
             }
 
             .instagram-link {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
+            }
+
+            .instagram-link svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .header-cta {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
             }
 
             .intro-video-section {
                 padding: 2rem 1.5rem;
+                background: linear-gradient(135deg, var(--primary) 0%, #1e3a5f 100%) !important;
             }
 
             .intro-container {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
 
             .intro-title {
                 font-size: 1.75rem;
+                color: white !important;
             }
 
             .intro-description {
                 font-size: 1rem;
+                color: rgba(255, 255, 255, 0.85) !important;
             }
 
             .intro-text {
@@ -1790,9 +1842,22 @@
                 order: 2;
             }
 
+            .video-caption {
+                font-size: 0.95rem;
+                max-width: 280px;
+                color: rgba(255, 255, 255, 0.9) !important;
+            }
+
             .intro-video-wrapper {
-                width: 260px;
-                height: 370px;
+                width: 240px;
+                height: auto;
+                max-height: 340px;
+                background: rgba(255,255,255,0.1);
+            }
+
+            .intro-video {
+                height: auto;
+                max-height: 340px;
             }
 
             .play-button {
@@ -2228,6 +2293,7 @@
     </div>
 
     <!-- Social Header -->
+    <div class="social-header-wrapper">
     <div class="social-header">
         <a href="https://instagram.com/merlins_group" target="_blank" class="instagram-link">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -2235,6 +2301,8 @@
             </svg>
             @merlins_group
         </a>
+        <a href="#form" class="header-cta">Book a Call</a>
+    </div>
     </div>
 
     <!-- Intro Video Section -->
@@ -2243,7 +2311,7 @@
             <div class="intro-video-column">
                 <p class="video-caption">Watch the video to hear from Prab, one of our consultants, explaining exactly how we do it.</p>
                 <div class="intro-video-wrapper">
-                    <video controls class="intro-video">
+                    <video controls class="intro-video" poster="thumbnail.png">
                         <source src="advert1.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -2256,7 +2324,7 @@
                     We help recruitment agencies scale by delivering pre-qualified, job-ready candidates directly into their pipeline.
                 </p>
                 <p class="intro-description" style="opacity: 0.8;">
-                    No more chasing leads. No more unqualified applicants. We source, train, and deliver candidates in high-paying sectors like <strong style="color: #60A5FA;">Healthcare</strong> and <strong style="color: #60A5FA;">AI</strong> , so you can focus on what you do best: closing deals.
+                    No more chasing leads. No more unqualified applicants. We source, train, and deliver candidates in high-paying sectors like <strong style="color: #60A5FA;">Healthcare</strong> and <strong style="color: #60A5FA;">AI</strong> — so you can focus on what you do best: closing deals.
                 </p>
                 <div class="intro-features" style="margin-top: 1.5rem;">
                     <div class="intro-feature"><span class="checkmark-animated"></span> Done-for-you lead generation</div>
@@ -2272,7 +2340,7 @@
         <div class="interview-container">
             <div class="interview-image-wrapper">
                 <a href="https://linkedin.com/in/ambisingh" target="_blank" class="linkedin-image-link">
-                    <img src="ambisingh.jpg" alt="Ambi Singh at Event" class="interview-image">
+                    <img src="./ambisingh.jpg" alt="Ambi Singh at Event" class="interview-image">
                     <div class="linkedin-overlay">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
                             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
@@ -2322,37 +2390,6 @@
         <div class="particle"></div>
         <div class="particle"></div>
     </div>
-
-    <!-- Video Hero Section -->
-    <section class="video-hero">
-        <div class="video-container">
-            <video autoplay muted loop playsinline class="hero-video">
-                <source src="PRABJOTVIDEO.MP4" type="video/mp4">
-            </video>
-            <div class="video-overlay"></div>
-            <div class="spotlight"></div>
-            <div class="video-content">
-                <span class="badge pulse-badge">For Recruitment Agencies Only</span>
-                <h1 class="video-title">Stop Chasing Leads.<br>Start Closing Deals.</h1>
-                <p class="video-subtitle">We deliver job-ready candidates, handle all communication, and automate your entire recruitment process — so you can focus on what matters: growing your agency.</p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">500+</span>
-                        <span class="stat-label">Placements Made</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">70%</span>
-                        <span class="stat-label">Cost Reduction</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Automated</span>
-                    </div>
-                </div>
-                <a href="#form" class="btn btn-primary btn-large btn-glow">Book Your Free Strategy Call →</a>
-            </div>
-        </div>
-    </section>
 
     <!-- Main Content Section -->
     <section class="hero">
@@ -2432,6 +2469,37 @@
                 <div class="form-footer" style="margin-top: 1.5rem;">
                     🔒 Your information is 100% secure and will never be shared
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Hero Section -->
+    <section class="video-hero">
+        <div class="video-container">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="PRABJOTVIDEO.MP4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+            <div class="spotlight"></div>
+            <div class="video-content">
+                <span class="badge pulse-badge">For Recruitment Agencies Only</span>
+                <h1 class="video-title">Stop Chasing Leads.<br>Start Closing Deals.</h1>
+                <p class="video-subtitle">We deliver job-ready candidates, handle all communication, and automate your entire recruitment process — so you can focus on what matters: growing your agency.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Placements Made</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">70%</span>
+                        <span class="stat-label">Cost Reduction</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Automated</span>
+                    </div>
+                </div>
+                <a href="#form" class="btn btn-primary btn-large btn-glow">Book Your Free Strategy Call →</a>
             </div>
         </div>
     </section>
@@ -2573,9 +2641,9 @@
     <section class="testimonials">
         <div class="testimonials-container">
             <div class="section-header">
-                <span class="section-badge">Trusted by Top Agencies</span>
-                <h2 class="section-title">Recruitment Agencies Love Us</h2>
-                <p class="section-subtitle">See what agency owners say about working with Merlin's Group</p>
+                <span class="section-badge">Real Results, Real People</span>
+                <h2 class="section-title">People Love Us</h2>
+                <p class="section-subtitle">From recruitment agencies and automotive businesses to e-commerce brands and luxury jewellers — see what our clients say</p>
             </div>
             
             <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
